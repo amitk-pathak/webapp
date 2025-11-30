@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Profile</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <h1>Your Potential Client Profile</h1>
+
+    {% if profile.error %}
+        <p style="color: red;">{{ profile.error }}</p>
+    {% else %}
+        <p><strong>Roles:</strong> {{ profile.titles | join(', ') }}</p>
+        <p><strong>Industry:</strong> {{ profile.industry }}</p>
+        <p><strong>Location:</strong> {{ profile.locations }}</p>
+        <p><strong>Explanation:</strong> {{ profile.explanation }}</p>
+        <p><strong>Confidence:</strong> {{ profile.confidence }}</p>
+    {% endif %}
+
+    <form action="/results" method="GET" style="margin-top: 20px;">
+        <button type="submit" style="background-color: blue; color: white; padding: 8px 16px; border: none; cursor: pointer;">Get Leads</button>
+    </form>
+</body>
+</html>
